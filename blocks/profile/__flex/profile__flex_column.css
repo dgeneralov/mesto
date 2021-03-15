@@ -1,0 +1,5 @@
+.prifile__flex_column {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}

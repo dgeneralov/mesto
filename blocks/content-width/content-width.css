@@ -1,0 +1,17 @@
+.content-width {
+    max-width:calc(100% - 400px);
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 1203px) {
+    .content-width {
+        max-width:calc(100% - 30%);
+    }
+  }
+
+@media screen and (max-width: 767px) {
+    .content-width {
+        max-width:calc(100% - 38px);
+    }
+  }
+
