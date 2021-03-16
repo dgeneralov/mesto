@@ -2,3 +2,8 @@
     transform: translate(80px, -50px);
     align-self: flex-end;
 }
+
+.popup__clouse:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}

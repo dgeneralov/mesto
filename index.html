@@ -16,13 +16,13 @@
             <div class="header__line content-width_none"></div>
         </header>
         <div class="popup">
-            <div class="popup__container">
+            <form class="popup__container">
                 <img class="popup__clouse" src="./images/popup-clos-icon.svg">
                 <h3 class="popup__title">Редактировать профиль</h3>
-                <input class="popup__input" type="text">
-                <input class="popup__input" type="text">
+                <input class="popup__input" id="name" type="text" value="Жак-Ив Кусто">
+                <input class="popup__input" id="jobe" type="text" value="Исследователь океана">
                 <button class="popup__button">Сохранить</button>
-            </div>
+            </form>
         </div>
         <main class="main content-width">
             <section class="profile">
@@ -32,19 +32,19 @@
 
                         <div class="prifile__flex_column">
                             <h1 class="profile__title">Жак-Ив Кусто</h1>
-                            <button class="buttons__edit"><img src="./images/button-edit.svg"></button>
+                            <button class="profile__buttons-edit"><img src="./images/button-edit.svg"></button>
                         </div>
                         <p class="profile__subtitle">Исследователь океана</p>
                     </div>
                 </div>
-                <button class="buttons__add"><img src="./images/button-add.svg"></button>
+                <button class="profile__buttons-add"><img src="./images/button-add.svg"></button>
             </section>
             <section class="elements">
                 <div class="elements__element">
                     <img class="elements__img" src="./images/elements-karachaevsk.svg">
                     <div class="elements__group">
                         <h3 class="elements__title">Карачаевск</h3>
-                        <img class="elements__icon" src="./images/elements-like.svg">
+                        <img class="elements__icon" id="1" src="./images/elements-like.svg">
                     </div>
 
                 </div>
