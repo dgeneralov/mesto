@@ -7,7 +7,7 @@
     margin-right: 10px;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1023px) {
     .prifile__avatar {
         max-width: 168.75px;
         max-height: 168.5px;

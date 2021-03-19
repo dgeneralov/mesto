@@ -5,6 +5,8 @@
         box-sizing: border-box;
         background-color: black;
         outline: none;
+        position: absolute;
+        left: calc(100% + 25px);
        
         }
         
@@ -15,7 +17,7 @@
         
         @media screen and (max-width: 767px) {
             .profile__buttons-edit {
-            min-width: 7.5px;
-            min-height: 7.5px;
+              left: calc(100% + 15.25px);
+            
             }
           }

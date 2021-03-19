@@ -4,7 +4,14 @@
     flex-direction: column;
     justify-content: center;
     gap: 16px;
+    position: relative;
     text-overflow: ellipsis;
     white-space: nowrap;
-    overflow: hidden;
+    
 }
+
+@media screen and (max-width: 767px) {
+    .prifile__info {
+        max-width: 282px;
+    }
+  }

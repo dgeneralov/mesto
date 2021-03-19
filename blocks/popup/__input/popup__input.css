@@ -1,6 +1,6 @@
 .popup__input {
     min-width: 358px;
-    margin-bottom: 57px;
+    margin-bottom: 30px;
     background: #ffffff !important;
     outline: none;
     border:none;
@@ -8,8 +8,17 @@
     color:black;
     font-size: 14px;
     line-height: 17px;
+    padding-bottom:13px;
+    
 }
 
-.popup__input:last-child {
-    margin-bottom: 0;
+
+@media screen and (max-width: 767px) {
+    .popup__input {
+        min-width: 0;
+        min-width: 238px;
+    }
+    .popup__input:last-child {
+        margin-bottom: 0;
+    }
 }
