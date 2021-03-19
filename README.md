@@ -1,17 +1,92 @@
-# Проект 4: Место
+# **mesto**
+### **Описание проекта**
 
-### Обзор
+- #### _Проект создан в учебных целях. в рамках проектной деятельности на платформе_ [Яндекс Практикум](https://praktikum.yandex.ru)
 
-* Figma
-* Картинки
+- #### _В проектной работе были реализованы:_
 
-**Figma**
+- Организация файлов по БЭМ
+- Адаптивная верстка для устройств с шириной экрана 320 и 1280 ppi, с приминением медиа-запросов
+- Публикация на хостинге [GitHub](https://dgeneralov.github.io/mesto/)
 
-* [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
+```css
 
-**Картинки**
+@media screen and (max-width: 1279px) {
+  .root {
+     min-width: 1024px;
+  }
+} 
 
-Доставать картинки предстоит из Фигмы. Это расхожая практика, поэтому полезно потренироваться.
-Не забудьте [оптимизировать картинки](https://tinypng.com/), чтобы ваш сайт загружался быстрее.
+@media screen and (max-width: 767px) {
+  .root {
+     min-width: 320px;
+  }
+} 
+```
+- Применеие Grid Layout
+- Применеие событий onclick,onmouseover,onmouseout. Реализованно на js.
+- интерактивность кнопок "like". 
+```js
+for (i = 0; i < like.length; i++) {
+    like[i].onclick = function () {
 
-Удачи!
+        if (this.getAttribute("src") == "./images/elenents-icon-active.svg") {
+            this.setAttribute("src", "./images/elements-like.svg");
+
+        } else
+            this.setAttribute("src", "./images/elenents-icon-active.svg");
+        this.style.opacity = "1";
+    }
+    like[i].onmouseover = function () {
+        if (this.getAttribute("src") == "./images/elements-like.svg") {
+            this.style.opacity = "0.6";
+        } else
+            this.style.opacity = "1";
+    }
+    like[i].onmouseout = function () {
+        if (this.getAttribute("src") == "./images/elements-like.svg") {
+            this.style.opacity = "1";
+        } else
+            this.style.opacity = "1";
+    }
+
+}
+```
+- возможность редактировать текст на сайте с помощью спеуиального окна "popup"
+```js
+buttonEdit.addEventListener("click", function () {
+    popup.classList.add("popup_opened");
+});
+
+popupClouse.addEventListener("click", function () {
+    popup.classList.remove("popup_opened");
+});
+
+
+let formElement = document.querySelector(".popup__container");
+let nameInput = formElement.querySelector("#name");
+let jobInput = formElement.querySelector("#jobe");
+
+
+function formSubmitHandler(evt) {
+    evt.preventDefault();
+
+    document.querySelector(".profile__title").textContent = nameInput.value;
+    document.querySelector(".profile__subtitle").textContent = jobInput.value;
+
+    popup.classList.remove("popup_opened");
+
+}
+```
+- Оформление файла [README](https://github.com/dgeneralov/russian-travel/blob/master/README.md "Привет")
+
+### **Инструкция и системные требования:**
+
+- Веб-браузер
+
+  - _google chrome_
+  - _mazila firefox_
+  - _yandex браузер_
+  - _ms edge_
+
+- Дабл клик по [index.html](https://github.com/dgeneralov/russian-travel/blob/master/index.html) и готово.
