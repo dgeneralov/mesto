@@ -1,0 +1,5 @@
+@media screen and (max-width: 767px) {
+    .content-width_none {
+        min-width: 100%;
+    }
+  }

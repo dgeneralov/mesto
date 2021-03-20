@@ -78,7 +78,7 @@ function formSubmitHandler(evt) {
 
 }
 ```
-- Оформление файла [README](https://github.com/dgeneralov/russian-travel/blob/master/README.md "Привет")
+- Оформление файла [README](https://dgeneralov.github.io/mesto/blob/master/README.md "Привет")
 
 ### **Инструкция и системные требования:**
 
@@ -89,4 +89,4 @@ function formSubmitHandler(evt) {
   - _yandex браузер_
   - _ms edge_
 
-- Дабл клик по [index.html](https://github.com/dgeneralov/russian-travel/blob/master/index.html) и готово.
+- Дабл клик по [index.html](https://dgeneralov.github.io/mesto/blob/master/index.html) и готово.

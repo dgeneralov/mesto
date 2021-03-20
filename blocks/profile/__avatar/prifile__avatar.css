@@ -2,7 +2,7 @@
     overflow: hidden;
     min-width: 168.75px;
     min-height: 127.5px;
-    border: 1px solid #C4C4C4;
+    border: 1px solid #c4c4c4;
     border-radius: 100%;
     margin-right: 10px;
 }
@@ -12,4 +12,4 @@
         max-width: 168.75px;
         max-height: 168.5px;
     }
-  }
+}

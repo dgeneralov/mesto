@@ -1,7 +1,7 @@
 .elements {
-    margin-top:47.25px;
+    margin-top: 47.25px;
     display: grid;
-    grid-template-columns: repeat(auto-fit,280px);
+    grid-template-columns: repeat(auto-fit, 280px);
     justify-content: center;
     row-gap: 17px;
     column-gap: 20px;

@@ -2,11 +2,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap:18px;
+    gap: 18px;
 }
 
 @media screen and (max-width: 1129px) {
     .profile {
-    flex-direction: column;
+        flex-direction: column;
     }
-  }
+}
