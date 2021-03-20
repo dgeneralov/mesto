@@ -21,8 +21,8 @@
 @import url("../blocks/footer/footer.css");
 @import url("../blocks/footer/__copy/footer__copy.css");
 @import url("../blocks/elements/__group/elements__group.css");
-@import url("../blocks/profile/__flex/profile__flex_button-position.css");
-@import url("../blocks/profile/__flex/profile__flex_avatar-text.css");
+@import url("../blocks/profile/__button-position/profile__button-position.css");
+@import url("../blocks/profile/__avatar-text/profile__avatar-text.css");
 @import url("../blocks/popup/popup.css");
 @import url("../blocks/popup/__container/popup__container.css");
 @import url("../blocks/popup/_opened/popup_opened.css");
