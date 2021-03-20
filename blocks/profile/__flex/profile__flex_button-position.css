@@ -1,4 +1,4 @@
-.prifile__flex_button-position {
+.profile__flex_button-position {
     max-width: 294px;
     position: relative;
     display: flex;
@@ -7,7 +7,7 @@
 }
 
 @media screen and (max-width: 767px) {
-    .prifile__flex_button-position {
+    .profile__flex_button-position {
         margin: 0 auto;
     }
 }

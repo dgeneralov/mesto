@@ -3,11 +3,12 @@
 @import url("../blocks/body-color/body-color.css");
 @import url("../blocks/root/root.css");
 @import url("../blocks/content-width/content-width.css");
+@import url("../blocks/content-width/__none/content-width__none.css");
 @import url("../blocks/profile/profile.css");
-@import url("../blocks/profile/__avatar/prifile__avatar.css");
+@import url("../blocks/profile/__avatar/profile__avatar.css");
 @import url("../blocks/profile/__buttons-edit/profile__buttons-edit.css");
 @import url("../blocks/profile/__buttons__add/profile__buttons-add.css");
-@import url("../blocks/profile/__info/prifile__info.css");
+@import url("../blocks/profile/__info/profile__info.css");
 @import url("../blocks/profile/__subtitle/profile__subtitle.css");
 @import url("../blocks/profile/__title/profile__title.css");
 @import url("../blocks/header/__line/header__line.css");
@@ -20,7 +21,7 @@
 @import url("../blocks/footer/footer.css");
 @import url("../blocks/footer/__copy/footer__copy.css");
 @import url("../blocks/elements/__group/elements__group.css");
-@import url("../blocks/profile/__flex/prifile__flex_button-position.css");
+@import url("../blocks/profile/__flex/profile__flex_button-position.css");
 @import url("../blocks/profile/__flex/profile__flex_avatar-text.css");
 @import url("../blocks/popup/popup.css");
 @import url("../blocks/popup/__container/popup__container.css");
