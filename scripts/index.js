@@ -10,6 +10,8 @@ let popup = document.querySelector(".popup"),
     nameInput = formElement.querySelector("#name"),
     jobInput = formElement.querySelector("#jobe");
 
+nameInput.value = "Жак-Ив Кусто";
+jobInput.value = "Исследователь океана";
 
 function openPopup() {
     popup.classList.add("popup_opened");
@@ -22,10 +24,6 @@ function clousePopup() {
     main.style.opacity = 1;
     header.style.opacity = 1;
 }
-
-
-
-
 
 function formSubmitHandler(evt) {
     evt.preventDefault();

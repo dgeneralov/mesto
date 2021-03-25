@@ -1,7 +1,6 @@
 .popup {
   max-width: 430px;
   max-height: 330px;
-  position: relative;
   margin: 0 auto;
   display: none;
   z-index: 99;
@@ -18,9 +17,7 @@
   .popup {
       max-width: 282px;
       max-height: 322px;
-      
       left: 5%;
       right: 5%;
   }
 }
-
