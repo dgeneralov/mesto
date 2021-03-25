@@ -8,7 +8,7 @@
     font-size: 18px;
     line-height: 22px;
     outline: none;
-    border-radius: 2px;
+    border: none;
 }
 
 .popup__button:hover {

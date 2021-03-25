@@ -1,15 +1,20 @@
 .profile__avatar {
     overflow: hidden;
-    min-width: 168.75px;
-    min-height: 127.5px;
+    max-width: 168.75px;
+    max-height: 127.5px;
     border: 1px solid #c4c4c4;
     border-radius: 100%;
-    margin-right: 10px;
 }
 
 @media screen and (max-width: 1023px) {
     .profile__avatar {
         max-width: 168.75px;
         max-height: 168.5px;
+    }
+}
+
+@media screen and (max-width: 767) {
+    .profile__avatar {
+       margin-bottom: 22.25px;
     }
 }

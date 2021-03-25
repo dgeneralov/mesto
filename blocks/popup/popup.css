@@ -1,14 +1,15 @@
 .popup {
   max-width: 430px;
   max-height: 330px;
+  position: relative;
   margin: 0 auto;
   display: none;
   z-index: 99;
   position: fixed;
-  top: 195px;
+  top: 30vh;
   left: 25%;
   right: 25%;
-  background: #ffffff;
+  background: white;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
 }
@@ -17,7 +18,7 @@
   .popup {
       max-width: 282px;
       max-height: 322px;
-      top: 123px;
+      
       left: 5%;
       right: 5%;
   }

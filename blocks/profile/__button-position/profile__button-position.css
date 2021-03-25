@@ -1,6 +1,5 @@
 .profile__button-position {
-    max-width: 294px;
-    position: relative;
+    max-width: 350px;
     display: flex;
     align-items: center;
     gap: 18px;

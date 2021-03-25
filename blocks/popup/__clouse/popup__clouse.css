@@ -1,6 +1,14 @@
 .popup__clouse {
-    transform: translate(80px, -50px);
+    min-width: 40px;
+    min-height: 40px;
+    position: absolute;
+    top: -80px;
+    left: 420px;
     align-self: flex-end;
+    background-color:rgba(225, 225, 225, 0);
+    border: none;
+    outline: none;
+    box-sizing: border-box;
 }
 
 .popup__clouse:hover {
@@ -8,10 +16,24 @@
     cursor: pointer;
 }
 
+
+
 @media screen and (max-width: 767px) {
     .popup__clouse {
+        top: -80px;
+        left: 275px;
         max-width: 26px;
         max-height: 26px;
-        transform: translate(35px, -40px);
+        
+    }
+}
+
+@media screen and (max-width: 409px) {
+    .popup__clouse {
+        top: -80px;
+        left: 230px;
+        max-width: 26px;
+        max-height: 26px;
+        
     }
 }

@@ -1,7 +1,7 @@
 .popup__input {
     min-width: 358px;
     margin-bottom: 30px;
-    background: #ffffff !important;
+    background: #fff;
     outline: none;
     border: none;
     border-bottom: 1px solid black;
