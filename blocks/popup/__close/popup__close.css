@@ -1,0 +1,24 @@
+.popup__close {
+    min-width: 40px;
+    min-height: 40px;
+    justify-content: flex-end;
+    transform: translate(60px,-80px);
+    align-self: flex-end;
+    background-color:rgba(225, 225, 225, 0);
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.popup__close:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 409px) {
+    .popup__close {
+        max-width: 26px;
+        max-height: 26px;
+        transform: translate(-15px,-73px);
+    }
+}

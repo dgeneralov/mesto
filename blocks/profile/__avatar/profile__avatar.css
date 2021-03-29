@@ -2,8 +2,8 @@
     overflow: hidden;
     max-width: 168.75px;
     max-height: 127.5px;
-    border: 1px solid #c4c4c4;
     border-radius: 100%;
+    object-fit: cover
 }
 
 @media screen and (max-width: 1023px) {
