@@ -1,8 +1,10 @@
 .popup__close {
     min-width: 40px;
     min-height: 40px;
-    justify-content: flex-end;
-    transform: translate(60px,-80px);
+    transform: translate(100%,-150%);
+    background-image: url("../../../images/popup-clouse-icon.svg");
+    background-position: center center;
+    background-repeat: no-repeat;
     align-self: flex-end;
     background-color:rgba(225, 225, 225, 0);
     border: none;
@@ -15,10 +17,10 @@
     cursor: pointer;
 }
 
-@media screen and (max-width: 409px) {
+@media screen and (max-width: 768px) {
     .popup__close {
-        max-width: 26px;
-        max-height: 26px;
-        transform: translate(-15px,-73px);
+        min-height: 26px;
+        min-width: 26px;
+        transform: translate(0,-150%);
     }
 }

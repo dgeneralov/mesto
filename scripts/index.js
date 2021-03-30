@@ -9,7 +9,8 @@ let popup = document.querySelector(".popup"),
 
 function openPopup() {
     popup.classList.add("popup_opened");
-    header.style.opacity = 0.5;
+    nameInput.value = title.textContent;
+    jobInput.value = subtitle.textContent;
 }
 
 function closePopup() {
