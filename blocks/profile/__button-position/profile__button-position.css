@@ -1,12 +1,5 @@
 .profile__button-position {
-    
     display: flex;
     align-items: center;
     gap: 18px;
-}
-
-@media screen and (max-width: 767px) {
-    .profile__button-position {
-        margin: 0 auto;
-    }
 }
