@@ -21,7 +21,7 @@
     .popup__close {
         min-height: 26px;
         min-width: 26px;
-        background-image: url("../../../images/popup-clouse-icon-litle.png");
+        background-image: url("../../../images/popup-clouse-icon-litle.svg");
         transform: translate(0,-150%);
     }
 }
