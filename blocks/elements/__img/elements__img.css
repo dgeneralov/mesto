@@ -1,5 +1,7 @@
 .elements__img {
-    max-width: 282px;
+    min-width: 282px;
     max-height: 282px;
     object-fit: cover;
+    object-position: center center;
+    overflow: hidden;
 }

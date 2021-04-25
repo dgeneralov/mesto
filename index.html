@@ -33,66 +33,48 @@
                         alt="добавить" /></button>
             </section>
             <section class="elements">
-                <div class="elements__element">
-                    <img class="elements__img" src="./images/elements-karachaevsk.png" alt="Карачаевск" />
-                    <div class="elements__group">
-                        <h3 class="elements__title">Карачаевск</h3>
-                        <button class="elements__icon"><img src="./images/elements-like.svg" alt="нравится" /></button>
+                <template class="card">
+                    <div class="elements__element" id="card">
+                        <button class="elements__icon elements__icon_remove"></button>
+                        <img class="elements__img" src="" alt="картинка" />
+                        <div class="elements__group">
+                            <h3 class="elements__title"></h3>
+                            <button class="elements__icon elements__icon_like"></button>
+                        </div>
                     </div>
-                </div>
-                <div class="elements__element">
-                    <img class="elements__img" src="./images/elements-everest.png" alt="Эверест" />
-                    <div class="elements__group">
-                        <h3 class="elements__title">Гора Эльбрус</h3>
-                        <button class="elements__icon"><img src="./images/elements-like.svg" alt="нравится" /></button>
-                    </div>
-                </div>
-                <div class="elements__element">
-                    <img class="elements__img" src="./images/elements-dombai.png" alt="Домбай" />
-                    <div class="elements__group">
-                        <h3 class="elements__title">Домбай</h3>
-                        <button class="elements__icon" type="button"><img src="./images/elements-like.svg"
-                                alt="нравится" /></button>
-                    </div>
-                </div>
-                <div class="elements__element">
-                    <img class="elements__img" src="./images/elements-dombai.png" alt="Домбай" />
-                    <div class="elements__group">
-                        <h3 class="elements__title">Домбай</h3>
-                        <button class="elements__icon" type="button"><img src="./images/elements-like.svg"
-                                alt="нравится" /></button>
-                    </div>
-                </div>
-                <div class="elements__element">
-                    <img class="elements__img" src="./images/elements-everest.png" alt="Эверест" />
-                    <div class="elements__group">
-                        <h3 class="elements__title">Гора Эльбрус</h3>
-                        <button class="elements__icon" type="button"><img src="./images/elements-like.svg"
-                                alt="нравится" /></button>
-                    </div>
-                </div>
-                <div class="elements__element">
-                    <img class="elements__img" src="./images/elements-karachaevsk.png" alt="Карачаевск" />
-                    <div class="elements__group">
-                        <h3 class="elements__title">Карачаевск</h3>
-                        <button class="elements__icon" type="button"><img src="./images/elements-like.svg"
-                                alt="нравится" /></button>
-                    </div>
-                </div>
+                </template>
             </section>
         </main>
         <footer class="footer">
             <p class="footer__copy">&copy; 2020 Mesto Russia</p>
         </footer>
-        <article class="popup">
+        <article class="popup popup_avatar">
             <div class="popup__window">
-                <button class="popup__close" type="button"></button>
+                <button class="popup__close popup__close_avatar" type="button"></button>
                 <h3 class="popup__title">Редактировать профиль</h3>
-                <form class="popup__container" name="form-popup">
+                <form class="popup__container popup__container_avatar" name="form-popup">
                     <input class="popup__input" id="name" type="text" value="" name="name" />
                     <input class="popup__input" id="jobe" type="text" value="" name="jobe" />
-                    <button class="popup__button" type="submit">Сохранить</button>
+                    <button class="popup__button popup__button_avatar" type="submit">Сохранить</button>
                 </form>
+            </div>
+        </article>
+        <article class="popup popup_mesto">
+            <div class="popup__window">
+                <button class="popup__close popup__close_mesto" type="button"></button>
+                <h3 class="popup__title">Новое место</h3>
+                <form class="popup__container popup__container_mesto" name="form-popup">
+                    <input class="popup__input popup__input_mesto-name" id="title" type="text" value="" name="title" />
+                    <input class="popup__input popup__input_mesto-link" id="link" type="text" value="" name="link" />
+                    <button class="popup__button popup__button_mesto" type="submit">Сохранить</button>
+                </form>
+            </div>
+        </article>
+        <article class="popup popup__image">
+            <div class="popup__window popup__window_image">
+                <button class="popup__close popup__close_image" type="button"></button>
+                <img class="popup__content" src="">
+                <h3 class="popup__title popup__title_image"></h3>
             </div>
         </article>
     </div>

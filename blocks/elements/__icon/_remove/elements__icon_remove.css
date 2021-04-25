@@ -1,0 +1,8 @@
+.elements__icon_remove {
+ background-image: url(../../../../images/elements-remove.svg);
+ min-width: 18px;
+ min-height: 20px;
+ position:absolute;
+ top:18px;
+ right: 15px;
+}
