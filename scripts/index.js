@@ -1,6 +1,6 @@
 const popupAvatar = document.querySelector(".popup_avatar"),
     popupMesto = document.querySelector(".popup_mesto"),
-    popupImage = document.querySelector(".popup__image"),
+    popupImage = document.querySelector(".popup_card"),
     mestoName = popupMesto.querySelector(".popup__input_mesto-name"),
     mestoLink = popupMesto.querySelector(".popup__input_mesto-link"),
     popupCloseAvatar = document.querySelector(".popup__close_avatar"),
