@@ -52,9 +52,9 @@
             <div class="popup__window">
                 <button class="popup__close popup__close_avatar" type="button"></button>
                 <h3 class="popup__title">Редактировать профиль</h3>
-                <form class="popup__container popup__container_avatar" name="form-popup">
-                    <input class="popup__input" id="name" type="text" value="" name="name" />
-                    <input class="popup__input" id="jobe" type="text" value="" name="jobe" />
+                <form class="popup__container popup__container_avatar" name="form-popup-avatar">
+                    <input class="popup__input" id="name" type="text" value="" name="name" placeholder="Имя" />
+                    <input class="popup__input" id="jobe" type="text" value="" name="jobe" placeholder="должность" />
                     <button class="popup__button popup__button_avatar" type="submit">Сохранить</button>
                 </form>
             </div>
@@ -63,9 +63,11 @@
             <div class="popup__window">
                 <button class="popup__close popup__close_mesto" type="button"></button>
                 <h3 class="popup__title">Новое место</h3>
-                <form class="popup__container popup__container_mesto" name="form-popup">
-                    <input class="popup__input popup__input_mesto-name" id="title" type="text" value="" name="title" />
-                    <input class="popup__input popup__input_mesto-link" id="link" type="text" value="" name="link" />
+                <form class="popup__container popup__container_mesto" name="form-popup-mesto">
+                    <input class="popup__input popup__input_mesto-name" id="title" type="text" value="" name="title"
+                        placeholder="Название" />
+                    <input class="popup__input popup__input_mesto-link" id="link" type="text" value="" name="link"
+                        placeholder="Ссылка на картинку" />
                     <button class="popup__button popup__button_mesto" type="submit">Сохранить</button>
                 </form>
             </div>

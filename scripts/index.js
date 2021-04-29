@@ -52,7 +52,11 @@ function openPoup(item) {
 }
 
 // open popupMesto
-buttonAdd.addEventListener("click", () => openPoup(popupMesto));
+buttonAdd.addEventListener("click", () => {
+    openPoup(popupMesto)
+    mestoName.value = "";
+    mestoLink.value = "";
+});
 
 // открываем popupAvatar
 buttonEdit.addEventListener("click", () => {
@@ -67,6 +71,7 @@ const openPopupImage = (item) => {
     const imgPopup = popupImage.querySelector(".popup__content"),
         imgTitle = popupImage.querySelector(".popup__title_image");
     imgPopup.src = item.src;
+    imgPopup.alt = item.alt;
     imgTitle.textContent = item.parentElement.querySelector(".elements__title").textContent;
 
 }
@@ -87,9 +92,25 @@ function closePopup(item) {
 popupCloseAvatar.addEventListener("click", () => closePopup(popupAvatar));
 popupClouseImage.addEventListener("click", () => closePopup(popupImage));
 popupCloseMesto.addEventListener("click", () => closePopup(popupMesto));
-const newCard = card.cloneNode(true);
-const openPopupImageCard = () => {
+
+function createCard(cardName, cardLink) {
+    const NewCard = card.cloneNode(true);
+    NewCard.querySelector(".elements__title").innerText = cardName;
+    NewCard.querySelector(".elements__img").src = cardLink;
+    return NewCard;
 }
+
+// добавление карточек на страницу из массива
+initialCards.forEach((item) => {
+    elements.append(createCard(item.name, item.link));
+});
+
+// Сохраняем изменения в popupMesto
+formMesto.addEventListener("submit", (evt) => {
+    evt.preventDefault();
+    elements.prepend(createCard(mestoName.value, mestoLink.value));
+    closePopup(popupMesto);
+});
 
 // // слушаем кнопки на карточках
 elements.addEventListener("click", e => {
@@ -98,26 +119,8 @@ elements.addEventListener("click", e => {
         button.parentElement.remove();
     else if (button.classList.contains("elements__icon_like")) {
         button.classList.toggle("elements__icon_like-active");
-        button.style.opacity = "1";
     }
     else if (button.classList.contains("elements__img"))
         openPopupImage(button);
 })
 
-// добавление карточек на страницу из массива
-initialCards.forEach((item) => {
-    const newCard = card.cloneNode(true);
-    newCard.querySelector(".elements__title").innerText = item.name;
-    newCard.querySelector(".elements__img").src = item.link;
-    elements.append(newCard);
-});
-
-// Сохраняем изменения в popupMesto
-formMesto.addEventListener("submit", (evt) => {
-    evt.preventDefault();
-    const newCard = card.cloneNode(true);
-    newCard.querySelector(".elements__title").innerText = mestoName.value;
-    newCard.querySelector(".elements__img").src = mestoLink.value;
-    elements.prepend(newCard);
-    closePopup(popupMesto);
-});
