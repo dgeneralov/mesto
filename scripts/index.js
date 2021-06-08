@@ -1,4 +1,6 @@
-const popupAvatar = document.querySelector(".popup_avatar"),
+const
+
+    popupAvatar = document.querySelector(".popup_avatar"),
     popupMesto = document.querySelector(".popup_mesto"),
     popupImage = document.querySelector(".popup_card"),
     mestoName = popupMesto.querySelector(".popup__input_mesto-name"),
@@ -12,12 +14,11 @@ const popupAvatar = document.querySelector(".popup_avatar"),
     subtitle = document.querySelector(".profile__subtitle"),
     formAvatar = document.querySelector(".popup__container_avatar"),
     formMesto = document.querySelector(".popup__container_mesto"),
-    nameInput = formAvatar.querySelector("#name"),
-    jobInput = formAvatar.querySelector("#jobe"),
+    nameInput = formAvatar.querySelector("#name-input"),
+    jobInput = formAvatar.querySelector("#job-input"),
     elements = document.querySelector(".elements"),
     card = elements.querySelector(".card").content,
     cardName = card.querySelector(".elements__title"),
-
     initialCards = [
         {
             name: 'Архыз',
@@ -53,9 +54,12 @@ function openPoup(item) {
 
 // open popupMesto
 buttonAdd.addEventListener("click", () => {
+    const button = popupMesto.querySelector('.popup__button');
     openPoup(popupMesto)
     mestoName.value = "";
     mestoLink.value = "";
+    button.setAttribute('disabled', 'disabled');
+    button.classList.add('popup__button_inactive');
 });
 
 // открываем popupAvatar
@@ -81,17 +85,32 @@ formAvatar.addEventListener("submit", (evt) => {
     evt.preventDefault();
     title.textContent = nameInput.value;
     subtitle.textContent = jobInput.value;
-    closePopup(popupAvatar);
+    clousePopup();
 });
 
 //закрываем popup
-function closePopup(item) {
-    item.classList.remove("popup_opened");
-}
-// обработчики на закрытие
-popupCloseAvatar.addEventListener("click", () => closePopup(popupAvatar));
-popupClouseImage.addEventListener("click", () => closePopup(popupImage));
-popupCloseMesto.addEventListener("click", () => closePopup(popupMesto));
+const clousePopup = () => {
+    const
+        popup = Array.from(document.querySelectorAll('.popup')),
+        popupButton = Array.from(document.querySelectorAll('.popup__close'));
+
+    popup.forEach((item) => {
+        document.addEventListener('keyup', (evt) => {
+            if (evt.key == 'Escape')
+                item.classList.remove("popup_opened");
+        });
+        item.addEventListener('click', (evt) => {
+            if (!evt.target.closest('.popup__window') || evt.target.closest('.popup__button'))
+                item.classList.remove("popup_opened");
+        });
+    })
+
+    popupButton.forEach((item) => {
+        item.addEventListener('click', () => {
+            item.parentElement.closest('.popup').classList.remove("popup_opened");
+        })
+    })
+};
 
 function createCard(cardName, cardLink) {
     const NewCard = card.cloneNode(true);
@@ -109,7 +128,7 @@ initialCards.forEach((item) => {
 formMesto.addEventListener("submit", (evt) => {
     evt.preventDefault();
     elements.prepend(createCard(mestoName.value, mestoLink.value));
-    closePopup(popupMesto);
+    clousePopup();
 });
 
 // // слушаем кнопки на карточках
@@ -124,3 +143,97 @@ elements.addEventListener("click", e => {
         openPopupImage(button);
 })
 
+
+
+const showInputError = (formElement, inputElement, errorMessage) => {
+    // Находим элемент ошибки внутри самой функции
+    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+    // Остальной код такой же
+    inputElement.classList.add('popup__input_error');
+    errorElement.textContent = errorMessage;
+    errorElement.classList.add('popup__input_error-active');
+};
+
+const hideInputError = (formElement, inputElement) => {
+    // Находим элемент ошибки
+    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+    // Остальной код такой же
+    inputElement.classList.remove('popup__input_error');
+    errorElement.classList.remove('popup__input_error-active');
+    errorElement.textContent = '';
+};
+
+const isValid = (formElement, inputElement) => {
+    if (!inputElement.validity.valid) {
+        // Если поле не проходит валидацию, покажем ошибку
+        showInputError(formElement, inputElement, inputElement.validationMessage);
+    } else {
+        // Если проходит, скроем
+        hideInputError(formElement, inputElement);
+    }
+};
+
+
+
+const setEventListeners = (formElement) => {
+    // Находим все поля внутри формы,
+    // сделаем из них массив методом Array.from
+    const inputList = Array.from(formElement.querySelectorAll('.popup__input')),
+        buttonElement = formElement.querySelector('.popup__button');
+
+    // Обойдём все элементы полученной коллекции
+    inputList.forEach((inputElement) => {
+        // каждому полю добавим обработчик события input
+        inputElement.addEventListener('input', () => {
+            // Внутри колбэка вызовем isValid,
+            // передав ей форму и проверяемый элемент
+            isValid(formElement, inputElement);
+            toggleButtonState(inputList, buttonElement);
+        });
+    });
+};
+
+const enableValidation = () => {
+    // Найдём все формы с указанным классом в DOM,
+    // сделаем из них массив методом Array.from
+    const formList = Array.from(document.querySelectorAll('.popup__container'));
+
+    // Переберём полученную коллекцию
+    formList.forEach((formElement) => {
+        formElement.addEventListener('submit', (evt) => {
+            // У каждой формы отменим стандартное поведение
+            evt.preventDefault();
+        });
+
+        // Для каждой формы вызовем функцию setEventListeners,
+        // передав ей элемент формы
+        setEventListeners(formElement);
+    });
+};
+
+// Вызовем функцию
+enableValidation();
+clousePopup();
+const hasInvalidInput = (inputList) => {
+    // проходим по этому массиву методом some
+    return inputList.some((inputElement) => {
+        // Если поле не валидно, колбэк вернёт true
+        // Обход массива прекратится и вся фунцкция
+        // hasInvalidInput вернёт true
+
+        return !inputElement.validity.valid;
+    })
+};
+
+const toggleButtonState = (inputList, buttonElement) => {
+    // Если есть хотя бы один невалидный инпут
+    if (hasInvalidInput(inputList)) {
+        // сделай кнопку неактивной
+        buttonElement.classList.add('popup__button_inactive');
+        buttonElement.setAttribute('disabled', 'disabled');
+    } else {
+        // иначе сделай кнопку активной
+        buttonElement.classList.remove('popup__button_inactive');
+        buttonElement.removeAttribute('disabled', 'disabled');
+    }
+};
