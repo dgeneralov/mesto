@@ -1,5 +1,4 @@
 const
-
     popupAvatar = document.querySelector(".popup_avatar"),
     popupMesto = document.querySelector(".popup_mesto"),
     popupImage = document.querySelector(".popup_card"),
@@ -18,48 +17,55 @@ const
     jobInput = formAvatar.querySelector("#job-input"),
     elements = document.querySelector(".elements"),
     card = elements.querySelector(".card").content,
-    cardName = card.querySelector(".elements__title"),
-    initialCards = [
-        {
-            name: 'Архыз',
-            link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-        },
-        {
-            name: 'Челябинская область',
-            link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-        },
-        {
-            name: 'Иваново',
-            link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-        },
-        {
-            name: 'Камчатка',
-            link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-        },
-        {
-            name: 'Холмогорский район',
-            link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-        },
-        {
-            name: 'Байкал',
-            link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-        }
-    ];
+    cardName = card.querySelector(".elements__title");
 
+// добавление карточек на страницу из массива
+initialCards.forEach((item) => {
+    elements.append(createCard(item.name, item.link));
+});
+
+// события закрытия popup
+function listenerPopup(item) {
+    const popupButton = item.querySelector('.popup__close');
+
+    document.addEventListener('keyup', keyup = (evt) => {
+        if (evt.key == 'Escape')
+            item.classList.remove("popup_opened");
+    });
+
+    item.addEventListener('click', click = (evt) => {
+        if (!evt.target.closest('.popup__window'))
+            item.classList.remove("popup_opened");
+    });
+
+    popupButton.addEventListener('click', clickBt = () => {
+        item.classList.remove("popup_opened");
+    })
+}
 
 // открываем popup
 function openPoup(item) {
     item.classList.add("popup_opened");
+    listenerPopup(item);
 }
 
-// open popupMesto
+// закрываем popup
+function closePopup(item) {
+    const popupButton = item.querySelector('.popup__close');
+    item.classList.remove("popup_opened");
+    document.removeEventListener('keyup', listenerPopup.keyup);
+    item.addEventListener('click', listenerPopup.click);
+    popupButton.addEventListener('click', listenerPopup.clickBt);
+}
+
+// открываем popupMesto
 buttonAdd.addEventListener("click", () => {
-    const button = popupMesto.querySelector('.popup__button');
+    const button = popupMesto.querySelector('.popup__button'),
+        form = popupMesto.querySelector('.popup__container_mesto'),
+        input = Array.from(form.querySelectorAll('.popup__input'));
     openPoup(popupMesto)
-    mestoName.value = "";
-    mestoLink.value = "";
-    button.setAttribute('disabled', 'disabled');
-    button.classList.add('popup__button_inactive');
+    form.reset();
+
 });
 
 // открываем popupAvatar
@@ -85,50 +91,23 @@ formAvatar.addEventListener("submit", (evt) => {
     evt.preventDefault();
     title.textContent = nameInput.value;
     subtitle.textContent = jobInput.value;
-    clousePopup();
+    closePopup(popupAvatar);
 });
-
-//закрываем popup
-const clousePopup = () => {
-    const
-        popup = Array.from(document.querySelectorAll('.popup')),
-        popupButton = Array.from(document.querySelectorAll('.popup__close'));
-
-    popup.forEach((item) => {
-        document.addEventListener('keyup', (evt) => {
-            if (evt.key == 'Escape')
-                item.classList.remove("popup_opened");
-        });
-        item.addEventListener('click', (evt) => {
-            if (!evt.target.closest('.popup__window') || evt.target.closest('.popup__button'))
-                item.classList.remove("popup_opened");
-        });
-    })
-
-    popupButton.forEach((item) => {
-        item.addEventListener('click', () => {
-            item.parentElement.closest('.popup').classList.remove("popup_opened");
-        })
-    })
-};
 
 function createCard(cardName, cardLink) {
-    const NewCard = card.cloneNode(true);
-    NewCard.querySelector(".elements__title").innerText = cardName;
-    NewCard.querySelector(".elements__img").src = cardLink;
-    return NewCard;
+    const newCard = card.cloneNode(true);
+    newCard.querySelector(".elements__title").innerText = cardName;
+    newCard.querySelector(".elements__img").src = cardLink;
+    newCard.querySelector(".elements__img").setAttribute('alt', 'картинка что надо');
+    return newCard;
 }
 
-// добавление карточек на страницу из массива
-initialCards.forEach((item) => {
-    elements.append(createCard(item.name, item.link));
-});
 
 // Сохраняем изменения в popupMesto
 formMesto.addEventListener("submit", (evt) => {
     evt.preventDefault();
     elements.prepend(createCard(mestoName.value, mestoLink.value));
-    clousePopup();
+    closePopup(popupMesto);
 });
 
 // // слушаем кнопки на карточках

@@ -53,7 +53,7 @@
             <div class="popup__window">
                 <button class="popup__close popup__close_avatar" type="button"></button>
                 <h3 class="popup__title">Редактировать профиль</h3>
-                <form class="popup__container popup__container_avatar" name="form-popup-avatar" novalidate>
+                <form class="popup__container popup__container_avatar" name="form-popup-avatar" id='-avatar' novalidate>
                     <input id="name-input" class="popup__input" type="text" value="" name="name" placeholder="Имя"
                         minlength="2" maxlength="40" required />
                     <span class="name-input-error text-error"></span>
@@ -66,7 +66,7 @@
         </article>
         <article class="popup popup_mesto">
             <div class="popup__window">
-                <button class="popup__close popup__close_mesto" type="button"></button>
+                <button class="popup__close popup__close_mesto" type="button" id='mesto'></button>
                 <h3 class="popup__title">Новое место</h3>
                 <form class="popup__container popup__container_mesto" name="form-popup-mesto" novalidate>
                     <input id="mesto-input" class="popup__input popup__input_mesto-name" type="text" value=""
@@ -75,8 +75,8 @@
                     <input id="link-input" class="popup__input popup__input_mesto-link" type="url" value="" name="link"
                         placeholder="Ссылка на картинку" required />
                     <span class="link-input-error text-error"></span>
-                    <button class="popup__button popup__button_mesto popup__button_inactive"
-                        type="submit">Сохранить</button>
+                    <button class="popup__button popup__button_mesto popup__button_inactive" type="submit"
+                        disabled>Сохранить</button>
                 </form>
             </div>
         </article>
@@ -88,6 +88,7 @@
             </div>
         </article>
     </div>
+    <script src="./scripts/initial-сards.js"></script>
     <script src="./scripts/index.js"></script>
     <script src="./scripts/validate.js"></script>
 </body>
