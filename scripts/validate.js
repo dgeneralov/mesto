@@ -1,3 +1,12 @@
+const config = {
+    form: '.popup__container',
+    submitButton: '.popup__button',
+    innactiveButton: 'popup__button_inactive',
+    input: '.popup__input',
+    inputError: 'popup__input_error',
+    spanError: 'popup__input_error-active'
+}
+
 const enableValidation = (object) => {
     // Найдём все формы с указанным классом в DOM, 
     // сделаем из них массив методом Array.from 
@@ -12,7 +21,7 @@ const enableValidation = (object) => {
 
         // Для каждой формы вызовем функцию setEventListeners, 
         // передав ей элемент формы 
-        setEventListeners(formElement, object);
+        setEventListeners(formElement, config);
     });
 };
 
@@ -28,8 +37,8 @@ const setEventListeners = (formElement, object) => {
         inputElement.addEventListener('input', () => {
             // Внутри колбэка вызовем isValid, 
             // передав ей форму и проверяемый элемент 
-            isValid(formElement, inputElement, object);
-            toggleButtonState(inputList, buttonElement, object);
+            isValid(formElement, inputElement, config);
+            toggleButtonState(inputList, buttonElement, config);
         });
     });
 };
@@ -37,10 +46,10 @@ const setEventListeners = (formElement, object) => {
 const isValid = (formElement, inputElement, object) => {
     if (!inputElement.validity.valid) {
         // Если поле не проходит валидацию, покажем ошибку 
-        showInputError(formElement, inputElement, inputElement.validationMessage, object);
+        showInputError(formElement, inputElement, inputElement.validationMessage, config);
     } else {
         // Если проходит, скроем 
-        hideInputError(formElement, inputElement, object);
+        hideInputError(formElement, inputElement, config);
     }
 };
 
@@ -87,11 +96,5 @@ const hasInvalidInput = (inputList) => {
 };
 
 // Вызовем функцию 
-enableValidation({
-    form: '.popup__container',
-    submitButton: '.popup__button',
-    innactiveButton: 'popup__button_inactive',
-    input: '.popup__input',
-    inputError: 'popup__input_error',
-    spanError: 'popup__input_error-active'
-});
+enableValidation(config);
+
