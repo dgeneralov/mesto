@@ -17,23 +17,43 @@ const
     jobInput = formAvatar.querySelector("#job-input"),
     elements = document.querySelector(".elements"),
     card = elements.querySelector(".card").content,
-    cardName = card.querySelector(".elements__title");
+    cardName = card.querySelector(".elements__title"),
+    config = {
+        form: '.popup__container',
+        submitButton: '.popup__button',
+        innactiveButton: 'popup__button_inactive',
+        input: '.popup__input',
+        inputError: 'popup__input_error',
+        spanError: 'popup__input_error-active'
+    };
+
+enableValidation(config);
 
 // добавление карточек на страницу из массива
 initialCards.forEach((item) => {
     elements.append(createCard(item.name, item.link));
 });
 
+const clickToClouse = () => {
+    const popup = Array.from(document.querySelectorAll('.popup'));
+    popup.forEach(function(item) {
+        item.addEventListener('click', (evt) => {
+            if (!evt.target.closest('.popup__window'))
+                item.classList.remove("popup_opened");
+        });
+    })
+};
+clickToClouse();
 
 
 // события закрытия popup
 function listenerPopup() {
     const popup = Array.from(document.querySelectorAll('.popup'));
-
-    popup.forEach(function (item) {
+    console.log('hi')
+    popup.forEach(function(item) {
         const popupButton = item.querySelector('.popup__close'),
-            saveButton = item.querySelector('.popup__button');
-        console.log(saveButton)
+            saveButton = Array.from(item.querySelectorAll('.popup__button'));
+        console.log(saveButton);
         const hadleKeyup = (evt) => {
             if (evt.key == 'Escape') {
                 item.classList.remove("popup_opened");
@@ -44,15 +64,13 @@ function listenerPopup() {
             item.classList.remove("popup_opened");
         };
 
-        item.addEventListener('click', click = (evt) => {
-            if (!evt.target.closest('.popup__window'))
-                item.classList.remove("popup_opened");
+        popupButton.addEventListener('click', clickBt);
+
+        saveButton.forEach(function(item) {
+            item.addEventListener('click', clickBt);
         });
 
-        popupButton.addEventListener('click', clickBt);
-        //saveButton.addEventListener('click', clickBt);
         document.addEventListener('keyup', hadleKeyup);
-
     })
 }
 
@@ -63,25 +81,15 @@ function openPoup(item) {
     item.classList.add("popup_opened");
 }
 
-// закрываем popup
-function closePopup(listenerPopup) {
-    // const popupButton = item.querySelector('.popup__close'),
-    //     popupSubmit = item.querySelector('.popup__button');
-    // console.log(popupSubmit)
-    item.classList.remove("popup_opened");
-    document.removeEventListener('keyup', hadleKeyup.item);
-    popupButton.addEventListener('click', clickBt);
-};
-closePopup();
-
 // открываем popupMesto
 buttonAdd.addEventListener("click", () => {
     const button = popupMesto.querySelector('.popup__button'),
         form = popupMesto.querySelector('.popup__container_mesto'),
         inputList = Array.from(form.querySelectorAll('.popup__input'));
-    openPoup(popupMesto)
-    form.reset();
 
+    openPoup(popupMesto);
+    form.reset();
+    toggleButtonState(inputList, button, config);
 });
 
 // открываем popupAvatar
@@ -131,8 +139,6 @@ elements.addEventListener("click", e => {
         button.parentElement.remove();
     else if (button.classList.contains("elements__icon_like")) {
         button.classList.toggle("elements__icon_like-active");
-    }
-    else if (button.classList.contains("elements__img"))
+    } else if (button.classList.contains("elements__img"))
         openPopupImage(button);
 })
-

@@ -1,12 +1,3 @@
-const config = {
-    form: '.popup__container',
-    submitButton: '.popup__button',
-    innactiveButton: 'popup__button_inactive',
-    input: '.popup__input',
-    inputError: 'popup__input_error',
-    spanError: 'popup__input_error-active'
-}
-
 const enableValidation = (object) => {
     // Найдём все формы с указанным классом в DOM, 
     // сделаем из них массив методом Array.from 
@@ -94,7 +85,3 @@ const hasInvalidInput = (inputList) => {
         return !inputElement.validity.valid;
     })
 };
-
-// Вызовем функцию 
-enableValidation(config);
-
