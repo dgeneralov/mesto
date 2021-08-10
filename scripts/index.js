@@ -49,11 +49,9 @@ clickToClouse();
 // события закрытия popup
 function listenerPopup() {
     const popup = Array.from(document.querySelectorAll('.popup'));
-    console.log('hi')
     popup.forEach(function(item) {
         const popupButton = item.querySelector('.popup__close'),
             saveButton = Array.from(item.querySelectorAll('.popup__button'));
-        console.log(saveButton);
         const hadleKeyup = (evt) => {
             if (evt.key == 'Escape') {
                 item.classList.remove("popup_opened");
