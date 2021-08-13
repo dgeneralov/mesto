@@ -28,47 +28,22 @@ const
     };
 
 // открываем popup
-function openPoup(popup) {
-
-    const hadleKeyup = (evt) => {
-        if (evt.key == 'Escape') {
-            popup.classList.remove("popup_opened");
-        }
-        return popup
-    };
-
-    popup.classList.add("popup_opened");
+function openPopup(popup) {
     document.addEventListener('keyup', hadleKeyup);
+    popup.addEventListener('click', clickBt);
+    popup.classList.add("popup_opened");
 }
 
 // закрытиe popup
-function clousePopup(popup) {
-
-    popup.addEventListener('click', (evt) => {
-        if (!evt.target.closest('.popup__window'))
-            popup.classList.remove("popup_opened");
-    });
-
-    const popupButton = popup.querySelector('.popup__close'),
-        saveButton = popup.querySelector('.popup__button'),
-        clickBt = () => {
-            popup.classList.remove("popup_opened");
-        };
-
-    popupButton.addEventListener('click', clickBt);
-    document.removeEventListener('keyup', openPoup.hadleKeyup);
-
-    if (popup != popupImage) {
-        saveButton.addEventListener('click', clickBt);
-    } else
-        return;
-
+function closePopup(popup) {
+    popup.removeEventListener('keyup', hadleKeyup);
+    popup.removeEventListener('click', clickBt);
+    popup.classList.remove("popup_opened");
 }
 
 // открываем popupMesto
 buttonAdd.addEventListener("click", () => {
-    openPoup(popupMesto);
-    clousePopup(popupMesto);
+    openPopup(popupMesto);
 });
 
 // Сохраняем изменения в popupMesto
@@ -80,34 +55,33 @@ formMesto.addEventListener("submit", (evt) => {
     elements.prepend(createCard(mestoName.value, mestoLink.value));
     form.reset();
     toggleButtonState(inputList, button, config);
-    clousePopup(popupMesto);
+    closePopup(popupMesto);
 });
 
 // открываем popupAvatar
 buttonEdit.addEventListener("click", () => {
-    openPoup(popupAvatar);
+    openPopup(popupAvatar);
     nameInput.value = title.textContent;
     jobInput.value = subtitle.textContent;
-    clousePopup(popupAvatar);
 });
-
-//открываем popupImage
-const openPopupImage = (item) => {
-    openPoup(popupImage);
-    const imgPopup = popupImage.querySelector(".popup__content"),
-        imgTitle = popupImage.querySelector(".popup__title_image");
-    imgPopup.src = item.src;
-    imgPopup.alt = item.alt;
-    imgTitle.textContent = item.parentElement.querySelector(".elements__title").textContent;
-    clousePopup(popupImage);
-}
 
 // сохраняем изменения в popupAvatar
 formAvatar.addEventListener("submit", (evt) => {
     evt.preventDefault();
     title.textContent = nameInput.value;
     subtitle.textContent = jobInput.value;
+    closePopup(popupAvatar);
 });
+
+//открываем popupImage
+const openPopupImage = (item) => {
+    openPopup(popupImage);
+    const imgPopup = popupImage.querySelector(".popup__content"),
+        imgTitle = popupImage.querySelector(".popup__title_image");
+    imgPopup.src = item.src;
+    imgPopup.alt = item.alt;
+    imgTitle.textContent = item.parentElement.querySelector(".elements__title").textContent;
+}
 
 // создаем карточку
 function createCard(cardName, cardLink) {
@@ -129,6 +103,23 @@ function createCard(cardName, cardLink) {
 
     return newCard;
 }
+
+//закрытие на esc
+const hadleKeyup = (evt) => {
+    const popup = document.querySelector('.popup_opened');
+
+    if (evt.key == 'Escape') {
+        popup.classList.remove("popup_opened");
+    }
+};
+
+//  закрытие по кнопке и оверлею
+const clickBt = (evt) => {
+    const popup = document.querySelector('.popup_opened');
+    if (!evt.target.closest('.popup__window') || evt.target.classList.contains('popup__close')) {
+        popup.classList.remove("popup_opened");
+    }
+};
 
 // добавление карточек на страницу из массива
 initialCards.forEach((item) => {
