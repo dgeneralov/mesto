@@ -78,9 +78,9 @@ const openPopupImage = (item) => {
     openPopup(popupImage);
     const imgPopup = popupImage.querySelector(".popup__content"),
         imgTitle = popupImage.querySelector(".popup__title_image");
-    imgPopup.src = item.src;
+    imgPopup.src = item;
     imgPopup.alt = item.alt;
-    imgTitle.textContent = item.parentElement.querySelector(".elements__title").textContent;
+    imgTitle.textContent = cardName.textContent;
 }
 
 // создаем карточку
@@ -92,7 +92,7 @@ function createCard(cardName, cardLink) {
     imageCards.setAttribute('alt', 'cardName');
     newCard.querySelector(".elements__title").textContent = cardName;
     imageCards.addEventListener('click', function() {
-        openPopupImage(this);
+        openPopupImage(cardLink);
     });
     newCard.querySelector(".elements__icon_like").addEventListener('click', function() {
         this.classList.toggle("elements__icon_like-active");
@@ -109,7 +109,7 @@ const hadleKeyup = (evt) => {
     const popup = document.querySelector('.popup_opened');
 
     if (evt.key == 'Escape') {
-        popup.classList.remove("popup_opened");
+        closePopup(popup);
     }
 };
 
@@ -117,7 +117,7 @@ const hadleKeyup = (evt) => {
 const clickBt = (evt) => {
     const popup = document.querySelector('.popup_opened');
     if (!evt.target.closest('.popup__window') || evt.target.classList.contains('popup__close')) {
-        popup.classList.remove("popup_opened");
+        closePopup(popup);
     }
 };
 
