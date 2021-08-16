@@ -1,12 +1,12 @@
 .popup__close {
     min-width: 40px;
     min-height: 40px;
-    transform: translate(100%,-150%);
+    transform: translate(100%, -150%);
     background-image: url("../../../images/popup-clouse-icon.svg");
     background-position: center center;
     background-repeat: no-repeat;
     align-self: flex-end;
-    background-color:rgba(225, 225, 225, 0);
+    background-color: rgba(225, 225, 225, 0);
     border: none;
     outline: none;
     box-sizing: border-box;
@@ -22,6 +22,6 @@
         min-height: 26px;
         min-width: 26px;
         background-image: url("../../../images/popup-clouse-icon-litle.svg");
-        transform: translate(0,-150%);
+        transform: translate(0, -150%);
     }
 }
