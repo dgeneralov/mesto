@@ -1,4 +1,31 @@
 const
+    popupAvatar = document.querySelector(".popup_avatar"),
+    popupMesto = document.querySelector(".popup_mesto"),
+    popupImage = document.querySelector(".popup_card"),
+    mestoName = popupMesto.querySelector(".popup__input_mesto-name"),
+    mestoLink = popupMesto.querySelector(".popup__input_mesto-link"),
+    popupCloseAvatar = document.querySelector(".popup__close_avatar"),
+    popupCloseMesto = document.querySelector(".popup__close_mesto"),
+    popupClouseImage = document.querySelector(".popup__close_image"),
+    title = document.querySelector(".profile__title"),
+    buttonEdit = document.querySelector(".profile__buttons-edit"),
+    buttonAdd = document.querySelector(".profile__buttons-add"),
+    subtitle = document.querySelector(".profile__subtitle"),
+    formAvatar = document.querySelector(".popup__container_avatar"),
+    formMesto = document.querySelector(".popup__container_mesto"),
+    nameInput = formAvatar.querySelector("#name-input"),
+    jobInput = formAvatar.querySelector("#job-input"),
+    elements = document.querySelector(".elements"),
+    card = elements.querySelector(".card").content.children[0],
+    cardName = card.querySelector(".elements__title"),
+    config = {
+        form: '.popup__container',
+        submitButton: '.popup__button',
+        innactiveButton: 'popup__button_inactive',
+        input: '.popup__input',
+        inputError: 'popup__input_error',
+        spanError: 'popup__input_error-active'
+    },
     initialCards = [{
             name: 'Архыз',
             link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -25,35 +52,6 @@ const
         }
     ];
 
-const
-    popupAvatar = document.querySelector(".popup_avatar"),
-    popupMesto = document.querySelector(".popup_mesto"),
-    popupImage = document.querySelector(".popup_card"),
-    mestoName = popupMesto.querySelector(".popup__input_mesto-name"),
-    mestoLink = popupMesto.querySelector(".popup__input_mesto-link"),
-    popupCloseAvatar = document.querySelector(".popup__close_avatar"),
-    popupCloseMesto = document.querySelector(".popup__close_mesto"),
-    popupClouseImage = document.querySelector(".popup__close_image"),
-    title = document.querySelector(".profile__title"),
-    buttonEdit = document.querySelector(".profile__buttons-edit"),
-    buttonAdd = document.querySelector(".profile__buttons-add"),
-    subtitle = document.querySelector(".profile__subtitle"),
-    formAvatar = document.querySelector(".popup__container_avatar"),
-    formMesto = document.querySelector(".popup__container_mesto"),
-    nameInput = formAvatar.querySelector("#name-input"),
-    jobInput = formAvatar.querySelector("#job-input"),
-    elements = document.querySelector(".elements"),
-    card = elements.querySelector(".card").content,
-    cardName = card.querySelector(".elements__title"),
-    config = {
-        form: '.popup__container',
-        submitButton: '.popup__button',
-        innactiveButton: 'popup__button_inactive',
-        input: '.popup__input',
-        inputError: 'popup__input_error',
-        spanError: 'popup__input_error-active'
-    };
-
 // открываем popup
 function openPopup(popup) {
     document.addEventListener('keyup', hadleKeyup);
@@ -79,9 +77,9 @@ formMesto.addEventListener("submit", (evt) => {
         form = popupMesto.querySelector('.popup__container_mesto'),
         inputList = Array.from(form.querySelectorAll('.popup__input'));
     evt.preventDefault();
-    elements.prepend(createCard(mestoName.value, mestoLink.value));
+    //elements.prepend(createCard(mestoName.value, mestoLink.value));
     form.reset();
-    toggleButtonState(inputList, button, config);
+    //toggleButtonState(inputList, button, config);
     closePopup(popupMesto);
 });
 
@@ -101,7 +99,7 @@ formAvatar.addEventListener("submit", (evt) => {
 });
 
 //открываем popupImage
-const openPopupImage = (item) => {
+export const openPopupImage = (item) => {
     openPopup(popupImage);
     const imgPopup = popupImage.querySelector(".popup__content"),
         imgTitle = popupImage.querySelector(".popup__title_image");
@@ -155,12 +153,13 @@ initialCards.forEach((item) => {
     elements.append(cardElement);
 });
 
+
+(function() {
+    const valid = new FormValidator(config);
+    valid.render();
+    // console.log(FormValidator.render())
+})()
 // enableValidation(config);
-
-
-
-
-
 
 export default { openPopupImage }
 import Card from './card.js';
