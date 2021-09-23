@@ -4,6 +4,10 @@ const
     popupImage = document.querySelector(".popup_card"),
     mestoName = popupMesto.querySelector(".popup__input_mesto-name"),
     mestoLink = popupMesto.querySelector(".popup__input_mesto-link"),
+    userData = {
+        name: mestoName.value,
+        link: mestoLink.value
+    },
     popupCloseAvatar = document.querySelector(".popup__close_avatar"),
     popupCloseMesto = document.querySelector(".popup__close_mesto"),
     popupClouseImage = document.querySelector(".popup__close_image"),
@@ -74,9 +78,17 @@ buttonAdd.addEventListener("click", () => {
 // Сохраняем изменения в popupMesto
 formMesto.addEventListener("submit", (evt) => {
     const button = popupMesto.querySelector('.popup__button'),
-        form = popupMesto.querySelector('.popup__container_mesto'),
-        inputList = Array.from(form.querySelectorAll('.popup__input'));
+        NewCard = new Card(card, userData),
+        cardElement = NewCard.render(),
+        form = popupMesto.querySelector('.popup__container_mesto');
+    //inputList = Array.from(form.querySelectorAll('.popup__input'));
     evt.preventDefault();
+    //console.log(userData)
+    elements.prepend(cardElement);
+
+
+
+
     //elements.prepend(createCard(mestoName.value, mestoLink.value));
     form.reset();
     //toggleButtonState(inputList, button, config);
@@ -157,9 +169,9 @@ initialCards.forEach((item) => {
 (function() {
     const valid = new FormValidator(config);
     valid.render();
-    // console.log(FormValidator.render())
+
 })()
-// enableValidation(config);
+
 
 export default { openPopupImage }
 import Card from './card.js';

@@ -1,12 +1,7 @@
-//import config from './index.js'
-
-
 export default class FormValidator {
     constructor(_config) {
         this._config = _config;
         this._formList = Array.from(document.querySelectorAll(this._config.form));
-        //this._inputList = Array.from(this._formElement.querySelectorAll(this._config.input));
-        // this._buttonElement = this._formElement.querySelector(this._config.submitButton);
     }
     render() {
 
@@ -50,11 +45,9 @@ export default class FormValidator {
         if (!this._inputElement.validity.valid) {
             // Если поле не проходит валидацию, покажем ошибку 
             this._showInputError();
-            console.log(this._inputElement, 'no valid')
         } else {
             // Если проходит, скроем 
             this._hideInputError();
-            console.log(this._inputElement, 'valid')
         }
     }
 
@@ -72,41 +65,36 @@ export default class FormValidator {
     }
 
     _showInputError() {
+
         this._errorElement = this._formElement.querySelector(`.${this._inputElement.id}-error`);
-        //console.log(this._formElement, this._inputElement.id);
-        //console.log(this._formElement.querySelector(`.${this._inputElement.id}-error`));
-        // Остальной код такой же 
+        console.log(this._errorElement)
+        console.log(this._inputElement.validationMessage)
+            //console.log(this._errorElement)
+            // Остальной код такой же 
         this._inputElement.classList.add(this._config.inputError);
-        this._errorElement.textContent = this.errorMessage;
-        //this._errorElement.classList.add(this._config.spanError);
-        return this._errorElement;
+        this._errorElement.textContent = this._inputElement.validationMessage;
+        this._errorElement.classList.add(this._config.spanError);
+
+        //return this._errorElement;
     }
 
     _hideInputError() {
         //this._errorElement = this._formElement.querySelector(`.${this._inputElement.id}-error`);
+        console.log(this._errorElement)
+        console.log(this._inputElement.validationMessage)
+
         // Остальной код такой же 
         this._inputElement.classList.remove(this._config.inputError);
-        //this._errorElement.classList.remove(this._config.spanError);
-        //this._errorElement.textContent = '';
-
+        this._errorElement.classList.remove(this._config.spanError);
+        this._errorElement.textContent = '';
     }
 
     _hasInvalidInput() {
         this._inputList.some((item) => {
-
             // Если поле не валидно, колбэк вернёт true 
             // Обход массива прекратится и вся фунцкция 
             // hasInvalidInput вернёт true 
-
             return !item.validity.valid
         })
-
     };
-
-
-
-
-
-
-
 };
