@@ -56,6 +56,13 @@ const
         }
     ];
 
+(function() {
+    const valid = new FormValidator(config);
+    valid.render();
+
+})()
+
+
 // открываем popup
 function openPopup(popup) {
     document.addEventListener('keyup', hadleKeyup);
@@ -77,8 +84,8 @@ buttonAdd.addEventListener("click", () => {
 
 // Сохраняем изменения в popupMesto
 formMesto.addEventListener("submit", (evt) => {
-    const button = popupMesto.querySelector('.popup__button'),
-        NewCard = new Card(card, userData),
+    //const button = popupMesto.querySelector('.popup__button'),
+    const NewCard = new Card(card, userData),
         cardElement = NewCard.render(),
         form = popupMesto.querySelector('.popup__container_mesto');
     //inputList = Array.from(form.querySelectorAll('.popup__input'));
@@ -104,7 +111,7 @@ buttonEdit.addEventListener("click", () => {
 
 // сохраняем изменения в popupAvatar
 formAvatar.addEventListener("submit", (evt) => {
-    evt.preventDefault();
+    //evt.preventDefault();
     title.textContent = nameInput.value;
     subtitle.textContent = jobInput.value;
     closePopup(popupAvatar);
@@ -166,11 +173,6 @@ initialCards.forEach((item) => {
 });
 
 
-(function() {
-    const valid = new FormValidator(config);
-    valid.render();
-
-})()
 
 
 export default { openPopupImage }
