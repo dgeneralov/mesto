@@ -6,9 +6,6 @@ const
     popupImage = document.querySelector(".popup_card"),
     mestoName = popupMesto.querySelector(".popup__input_mesto-name"),
     mestoLink = popupMesto.querySelector(".popup__input_mesto-link"),
-    //popupCloseAvatar = document.querySelector(".popup__close_avatar"),
-    //popupCloseMesto = document.querySelector(".popup__close_mesto"),
-    //popupClouseImage = document.querySelector(".popup__close_image"),
     title = document.querySelector(".profile__title"),
     buttonEdit = document.querySelector(".profile__buttons-edit"),
     buttonAdd = document.querySelector(".profile__buttons-add"),
@@ -94,7 +91,6 @@ buttonAdd.addEventListener("click", () => {
 
 // Сохраняем изменения в popupMesto
 formMesto.addEventListener("submit", (evt) => {
-    //const button = popupMesto.querySelector('.popup__button'),
     const userData = {
             name: mestoName.value,
             link: mestoLink.value

@@ -48,12 +48,10 @@ export default class FormValidator {
             // сделай кнопку неактивной 
             this._buttonElement.classList.add(this._config.innactiveButton);
             this._buttonElement.setAttribute('disabled', 'disabled');
-            console.log(this._hasInvalidInput())
         } else {
             // иначе сделай кнопку активной 
             this._buttonElement.classList.remove(this._config.innactiveButton);
             this._buttonElement.removeAttribute('disabled', 'disabled');
-            console.log(this._hasInvalidInput())
         }
     };
 
