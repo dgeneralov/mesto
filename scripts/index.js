@@ -1,16 +1,14 @@
 const
     popupAvatar = document.querySelector(".popup_avatar"),
     popupMesto = document.querySelector(".popup_mesto"),
+    editFormElement = document.querySelector('.popup__container_avatar'),
+    cardFormElement = document.querySelector('.popup__container_mesto'),
     popupImage = document.querySelector(".popup_card"),
     mestoName = popupMesto.querySelector(".popup__input_mesto-name"),
     mestoLink = popupMesto.querySelector(".popup__input_mesto-link"),
-    userData = {
-        name: mestoName.value,
-        link: mestoLink.value
-    },
-    popupCloseAvatar = document.querySelector(".popup__close_avatar"),
-    popupCloseMesto = document.querySelector(".popup__close_mesto"),
-    popupClouseImage = document.querySelector(".popup__close_image"),
+    //popupCloseAvatar = document.querySelector(".popup__close_avatar"),
+    //popupCloseMesto = document.querySelector(".popup__close_mesto"),
+    //popupClouseImage = document.querySelector(".popup__close_image"),
     title = document.querySelector(".profile__title"),
     buttonEdit = document.querySelector(".profile__buttons-edit"),
     buttonAdd = document.querySelector(".profile__buttons-add"),
@@ -22,6 +20,10 @@ const
     elements = document.querySelector(".elements"),
     card = elements.querySelector(".card").content.children[0],
     cardName = card.querySelector(".elements__title"),
+    formlist = [{
+        edit: editFormElement,
+        card: cardFormElement
+    }],
     config = {
         form: '.popup__container',
         submitButton: '.popup__button',
@@ -56,12 +58,20 @@ const
         }
     ];
 
-(function() {
-    const valid = new FormValidator(config);
-    valid.render();
+//добавление карточек на страницу из массива
+initialCards.forEach((item) => {
+    const NewCard = new Card(card, item);
+    const cardElement = NewCard.render();
+    elements.append(cardElement);
+});
 
-})()
-
+// валидация форм
+formlist.forEach((item) => {
+    const cardValidator = new FormValidator(item.edit, config);
+    const editValidator = new FormValidator(item.card, config);
+    editValidator.render();
+    cardValidator.render();
+})
 
 // открываем popup
 function openPopup(popup) {
@@ -85,21 +95,16 @@ buttonAdd.addEventListener("click", () => {
 // Сохраняем изменения в popupMesto
 formMesto.addEventListener("submit", (evt) => {
     //const button = popupMesto.querySelector('.popup__button'),
-    const NewCard = new Card(card, userData),
+    const userData = {
+            name: mestoName.value,
+            link: mestoLink.value
+        },
+        NewCard = new Card(card, userData),
         cardElement = NewCard.render(),
         form = popupMesto.querySelector('.popup__container_mesto');
-    //inputList = Array.from(form.querySelectorAll('.popup__input'));
-    evt.preventDefault();
-    //console.log(userData)
-    elements.prepend(cardElement);
-
-
-
-
-    //elements.prepend(createCard(mestoName.value, mestoLink.value));
-    form.reset();
-    //toggleButtonState(inputList, button, config);
     closePopup(popupMesto);
+    elements.prepend(cardElement);
+    form.reset();
 });
 
 // открываем popupAvatar
@@ -127,27 +132,6 @@ export const openPopupImage = (item) => {
     imgTitle.textContent = cardName.textContent;
 }
 
-// создаем карточку
-// function createCard(cardName, cardLink) {
-//     const newCard = card.cloneNode(true),
-//         imageCards = newCard.querySelector(".elements__img");
-
-//     imageCards.src = cardLink;
-//     imageCards.setAttribute('alt', 'cardName');
-//     newCard.querySelector(".elements__title").textContent = cardName;
-//     imageCards.addEventListener('click', function() {
-//         openPopupImage(cardLink);
-//     });
-//     newCard.querySelector(".elements__icon_like").addEventListener('click', function() {
-//         this.classList.toggle("elements__icon_like-active");
-//     });
-//     newCard.querySelector(".elements__icon_remove").addEventListener('click', function() {
-//         this.parentElement.remove();
-//     });
-
-//     return newCard;
-// }
-
 //закрытие на esc
 const hadleKeyup = (evt) => {
     const popup = document.querySelector('.popup_opened');
@@ -164,16 +148,6 @@ const clickBt = (evt) => {
         closePopup(popup);
     }
 };
-
-//добавление карточек на страницу из массива
-initialCards.forEach((item) => {
-    const NewCard = new Card(card, item);
-    const cardElement = NewCard.render();
-    elements.append(cardElement);
-});
-
-
-
 
 export default { openPopupImage }
 import Card from './card.js';
